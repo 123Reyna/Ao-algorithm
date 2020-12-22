@@ -1,0 +1,51 @@
+1. Diameter of Binary Tree
+
+2.
+Given a binary tree, you need to compute the length of the diameter of the tree. 
+The diameter of a binary tree is the length of the longest path between any two nodes in a tree. 
+This path may or may not pass through the root.
+
+Note: The length of path between two nodes is represented by the number of edges between them.(求边)
+
+
+          1
+         / \
+        2   3
+       / \     
+      4   5   
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     public int val;
+ *     public TreeNode left;
+ *     public TreeNode right;
+ *     public TreeNode(int val=0, TreeNode left=null, TreeNode right=null) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+public class Solution {
+    
+    private int max = 0;
+    public int DiameterOfBinaryTree(TreeNode root) {
+         dfs(root);
+    return max;
+    }
+    
+    
+     public int dfs(TreeNode root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            int leftDepth = dfs(root.left);//递归左子树长度
+            int rightDepth = dfs(root.right);//递归右子树长度
+            max = Math.Max(leftDepth + rightDepth, max);//二者最大值
+
+            return Math.Max(leftDepth, rightDepth) + 1;
+        }
+}
