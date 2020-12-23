@@ -77,10 +77,10 @@ public class MinStack {
         public void push(int x)
         {
             // 确保容量体积
-            if(index>stack.Length)
+            if(index>=stack.Length-1)
             {
                 int[] newStack = new int[stack.Length * 2];
-                newStack.CopyTo(stack, stack.Length);
+                 Array.Copy(stack, 0, newStack, 0, stack.Length);
                 stack = newStack;
             }
             index++;
