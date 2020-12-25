@@ -51,3 +51,6 @@ public class Solution {
         return max_num;
     }
 }
+
+
+2.分治法
